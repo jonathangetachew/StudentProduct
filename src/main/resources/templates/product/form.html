@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'product form', 'Product Form | Supplier Product Assignment')}">
+<body>
+<div class="row" style="margin-top: 2rem;">
+    <form class="col s12" th:action="@{/product/}" method="post" th:object="${product}">
+        <input type="hidden" th:field="*{id}"/>
+        <div style="margin: 1rem 0;">
+            <span style="font-size: 2em;">Enter Product Information</span>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input
+                    placeholder="Product Number"
+                    th:field="*{productNumber}"
+                    th:value="*{productNumber}"
+                    id="product_number"
+                   type="text" class="validate"
+                   required>
+                <label for="product_number">Product Number</label>
+                <span th:if="${#fields.hasErrors('productNumber')}"
+                      th:errors="*{productNumber}"
+                      class="helper-text"
+                      data-error="wrong"
+                      data-success="right">
+                    Error
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input
+                    placeholder="Name"
+                    th:value="*{name}"
+                    th:field="*{name}"
+                    id="name"
+                    type="text"
+                    class="validate"
+                    required>
+                <label for="name">Name</label>
+                <span th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"
+                      class="helper-text"
+                      data-error="wrong"
+                      data-success="right">
+                    Error
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input
+                    placeholder="Unit Price"
+                    th:value="*{unitPrice}"
+                    th:field="*{unitPrice}"
+                    id="unit_price"
+                    type="text"
+                    class="validate"
+                    required>
+                <label for="unit_price">Unit Price</label>
+                <span th:if="${#fields.hasErrors('unitPrice')}"
+                      th:errors="*{unitPrice}"
+                      class="helper-text"
+                      data-error="wrong"
+                      data-success="right">
+                    Error
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input
+                    placeholder="Quantity In Store"
+                    th:value="*{quantityInStore}"
+                    th:field="*{quantityInStore}"
+                    id="quantity"
+                    type="text"
+                    class="validate"
+                    required>
+                <label for="quantity">Quantity In Store</label>
+                <span th:if="${#fields.hasErrors('quantityInStore')}"
+                      th:errors="*{quantityInStore}"
+                      class="helper-text"
+                      data-error="wrong"
+                      data-success="right">
+                    Error
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Date Supplied"
+                       th:field="*{dateSupplied}"
+                       id="date_supplied"
+                       type="date"
+                       class="validate"
+                       required>
+                <label for="date_supplied">Date Supplied</label>
+                <span th:if="${#fields.hasErrors('dateSupplied')}"
+                      th:errors="*{dateSupplied}"
+                      class="helper-text" data-error="wrong"
+                      data-success="right"
+                      style="color:crimson;">Error</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select class="browser-default" name="classroom.id" required>
+                    <option value="" disabled selected>Select a Supplier</option>
+                    <option th:each="supplier : ${suppliers}"
+                            th:value="${supplier.id}"
+                            th:selected="${supplier.id.equals(product?.supplier?.id)}"
+                            th:text="${supplier.name}">Supplier Name</option>
+                </select>
+                <span th:if="${#fields.hasErrors('supplier')}"
+                      th:errors="*{supplier}"
+                      class="helper-text" data-error="wrong"
+                      data-success="right"
+                      style="color:crimson;">Error</span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <a href="/products" class="waves-effect waves-light btn-large">
+                <i class="material-icons left">cancel</i>Cancel
+            </a>
+            <button class="waves-effect waves-light btn-large" type="submit">
+                <i class="material-icons left">send</i>Submit
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

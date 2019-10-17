@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'home', 'Home | Supplier Product Assignment')}">
+<body>
+<div class="row">
+    <div class="col s6 m6">
+        <h3 class="header">Products</h3>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/food/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Explore Our Products</p>
+                </div>
+                <div class="card-action">
+                    <a th:href="@{/products}">View Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s6 m6">
+        <h3 class="header">Suppliers</h3>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/business/2">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Meet Our Suppliers</p>
+                </div>
+                <div class="card-action">
+                    <a th:href="@{/suppliers}">View Suppliers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

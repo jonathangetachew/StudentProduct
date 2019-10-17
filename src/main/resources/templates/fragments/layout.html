@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (template, menu, title)">
+
+<head>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--    Materialize-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title th:text="${title}">Supplier Product Assignemt</title>
+
+<link rel="stylesheet" href="./css/main.css" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+<nav>
+    <div class="nav-wrapper blue lighten-1">
+        <a th:href="@{'/'}" class="brand-logo" style="padding-left: 2rem;">
+            <i class="material-icons">sports_volleyball</i>
+            Supplier Product Assignemt
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down" style="padding-right: 1rem;">
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">
+                <a th:href="@{'/'}">Home</a>
+            </li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/suppliers' ? 'active':''}">
+                <a th:href="@{'/suppliers'}">Suppliers</a>
+            </li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/products' ? 'active':''}">
+                <a th:href="@{'/products'}">Products</a>
+            </li>
+            <li><a class="waves-effect waves-light btn">Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="container xd-container">
+
+        <th:block th:include="${template}"/>
+
+        <br/>
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--JQuery-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<!--    Materialize-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--Custom JS-->
+<script type="text/javascript" src="./js/custom.js" th:src="@{/js/custom.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'suppliers', 'Products | Student Product Assignment')}">
+<body>
+<div style="margin: 1rem 0;">
+    <span style="font-size: 3em;">Products List</span>
+    <span style="float:right; margin-top: 1rem;">
+            <a th:href="@{'/products/new'}"
+               class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add Product</a>
+        </span>
+</div>
+<table class="responsive-table highlight">
+    <tr>
+        <th>#</th>
+        <th>Product Number</th>
+        <th>Product Name</th>
+        <th>Unit Price</th>
+        <th>Quantity In Store</th>
+        <th>Date Supplied</th>
+        <th>Supplier</th>
+        <th></th>
+    </tr>
+    <tr th:each="product, i : ${products}">
+        <td scope="row" th:text="${i.count}">1</td>
+        <td th:text="${product.productNumber}">1</td>
+        <td th:text="${product.name}">Gloves</td>
+        <td th:text="${product.unitPrice}">12.00</td>
+        <td th:text="${product.quantityInStore}">100</td>
+        <td th:text="${product.dateSupplied}">2019/10/16</td>
+        <td th:text="${product?.supplier?.name}">Walmart</td>
+        <td>
+            <span><a th:href="@{'/products/' + ${product.id}}">
+                <i class="material-icons left">view_list</i></a></span>
+            <span><a th:href="@{'/products/' + ${product.id} + '/edit'}">
+                    <i class="material-icons left">edit</i></a></span>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'view', 'Product Details | Supplier Product Assignment')}">
+<body>
+<div style="margin: 2rem 0;">
+    <span style="font-size: 3em;">Product Details</span>
+    <span style="float:right; margin-top: 1rem;">
+        <a th:href="@{'/products'}"
+           class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Go Back</a>
+        <a th:href="@{'/products/' + ${product.id} + '/edit'}"
+           class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit Supplier</a>
+    </span>
+</div>
+<div>
+    <table class="responsive-table highlight">
+        <tr>
+            <td>Product ID</td>
+            <td th:text="${product.id}">1</td>
+        </tr>
+        <tr>
+            <td>Product Number</td>
+            <td th:text="${product.productNumber}">1</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${product.name}">Gloves</td>
+        </tr>
+        <tr>
+            <td>Unit Price</td>
+            <td th:text="${product.unitPrice}">12.00</td>
+        </tr>
+        <tr>
+            <td>Quantity In Store</td>
+            <td th:text="${product.quantityInStore}">100</td>
+        </tr>
+        <tr>
+            <td>Date Supplied</td>
+            <td th:text="${product.dateSupplied}">2019/10/16</td>
+        </tr>
+        <tr>
+            <td>Supplier Name</td>
+            <td th:text="${product?.supplier?.name}">Walmart</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

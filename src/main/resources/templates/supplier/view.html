@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'view', 'Supplier Details | Supplier Product Assignment')}">
+<body>
+<div style="margin: 2rem 0;">
+    <span style="font-size: 3em;">Supplier Details</span>
+    <span style="float:right; margin-top: 1rem;">
+        <a th:href="@{'/suppliers'}"
+           class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Go Back</a>
+        <a th:href="@{'/suppliers/' + ${supplier.id} + '/edit'}"
+           class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Edit Supplier</a>
+    </span>
+</div>
+<div>
+    <table class="responsive-table highlight">
+        <tr>
+            <td>Supplier ID</td>
+            <td th:text="${supplier.id}">1</td>
+        </tr>
+        <tr>
+            <td>Supplier Number</td>
+            <td th:text="${supplier.supplierNumber}">1</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${supplier.name}">Walmart</td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td th:text="${supplier.contactPhoneNumber}">1234567890</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
